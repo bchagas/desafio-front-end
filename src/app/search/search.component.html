@@ -1,0 +1,19 @@
+<form id="search" [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)" novalidate>
+  <legend>Pesquisar endereço</legend>
+
+  <fieldset class="inputs">
+    <ol>
+      <li class="input">
+        <app-search-input formControlName="startAddress" [placeholder]="'Endereço de Partida'" ngDefaultControl></app-search-input>
+      </li>
+      <li class="input">
+        <app-search-input formControlName="finalAddress" [placeholder]="'Endereço de Chegada'" ngDefaultControl></app-search-input>
+      </li>
+    </ol>
+  </fieldset>
+  <fieldset class="actions">
+    <ol>
+      <li><button type="submit">Traçar Rota</button></li>
+    </ol>
+  </fieldset>
+</form>
