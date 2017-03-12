@@ -1,5 +1,12 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validator } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { SearchService } from '../services/search.service';
+
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/throw';
 
 @Component({
   selector: 'app-search-input',
@@ -9,12 +16,22 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Va
 export class SearchInputComponent implements OnInit {
   @Input() placeholder: string;
 
-  constructor() {}
+  address = new FormControl();
+  items: Observable<Array<string>>;
 
-  ngOnInit() {}
+  constructor(
+    private searchService: SearchService
+  ) {}
 
-  onChange(event) {
-    console.log(event.target.value);
+  ngOnInit() {
+    this.address.valueChanges
+        .debounceTime(600)
+        .distinctUntilChanged()
+        .switchMap(term => this.searchService.search(term))
+        .subscribe(response => {
+          console.log(response);
+        }, (error) => {
+          console.log(error);
+        });
   }
-
 }

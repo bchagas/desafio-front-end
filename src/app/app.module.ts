@@ -8,6 +8,10 @@ import { SearchInputModule } from './search-input.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 
+import { ApiService } from './services/api.service';
+import { SearchService } from './services/search.service';
+import { SignatureService } from './services/signature.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,11 @@ import { SearchComponent } from './search/search.component';
     ReactiveFormsModule,
     SearchInputModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    SearchService,
+    SignatureService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

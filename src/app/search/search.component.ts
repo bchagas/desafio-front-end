@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   public searchForm: FormGroup;
   public startAddress = new FormControl('', Validators.required);
   public finalAddress = new FormControl('', Validators.required);
@@ -18,6 +18,9 @@ export class SearchComponent {
       startAddress: this.startAddress,
       finalAddress: this.finalAddress
     });
+  }
+
+  ngOnInit() {
   }
 
   onSubmit() {
