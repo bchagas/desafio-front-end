@@ -1,3 +1,7 @@
 <input type="text"
        [placeholder]="placeholder"
        [formControl]="address" />
+
+<ul *ngIf="displaySearchResults">
+  <li *ngFor="let address of addresses | async" (click)='setAddress($event)'>{{address}}</li>
+</ul>
