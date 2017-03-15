@@ -32,7 +32,7 @@ export class SearchInputComponent {
 
   setAddress(event) {
     const dataSet = event.target.dataset;
-    this.address.setValue(event.target.textContent.trim());
+    this.address.patchValue(event.target.textContent.trim(), { emitEvent: false });
     this.eventBus.post(
       {
         action: AppConsts.SET_DIRECTION,
