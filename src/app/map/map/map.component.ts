@@ -61,10 +61,11 @@ export class MapComponent implements OnInit, OnDestroy {
     const myRoute = mplk.route(routeOptions);
 
     myRoute.on('done', function (event) {
-      console.log(event);
-    });
+      this.eventBus.post({ action: AppConsts.UPDATE_INFO, data: event.routes[0].summary });
+    }.bind(this));
 
     myRoute.removeFromMap();
     myRoute.addTo(this.map);
   }
 }
+

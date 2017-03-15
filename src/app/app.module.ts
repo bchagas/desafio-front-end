@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { InfoModule } from './info/info.module';
 import { SearchInputModule } from './search-input.module';
 import { MapModule } from './map/map.module';
 
@@ -22,6 +23,7 @@ import { SignatureService } from './services/signature.service';
   imports: [
     BrowserModule,
     FormsModule,
+    InfoModule,
     HttpModule,
     MapModule,
     ReactiveFormsModule,

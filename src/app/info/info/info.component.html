@@ -1,0 +1,5 @@
+<template [ngIf]="dataLoaded">
+  <p>{{ duration }}</p>
+  <p>{{ distance }}</p>
+  <p>{{ tollFees | currency:'BRL':true }}</p>
+</template>
