@@ -4,10 +4,10 @@
   <fieldset class="inputs">
     <ol>
       <li class="input">
-        <app-search-input formControlName="startAddress" [placeholder]="'Endereço de Partida'" ngDefaultControl></app-search-input>
+        <app-search-input formControlName="startAddress" [direction]="'from'" [placeholder]="'Endereço de Partida'" ngDefaultControl></app-search-input>
       </li>
       <li class="input">
-        <app-search-input formControlName="finalAddress" [placeholder]="'Endereço de Chegada'" ngDefaultControl></app-search-input>
+        <app-search-input formControlName="finalAddress" [direction]="'to'" [placeholder]="'Endereço de Chegada'" ngDefaultControl></app-search-input>
       </li>
     </ol>
   </fieldset>

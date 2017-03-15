@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { EventBusService } from '../services/event-bus.service';
 import { SearchService } from '../services/search.service';
+import { AppConsts } from '../app.consts';
 
 import 'rxjs/add/observable/of';
 
@@ -13,28 +15,47 @@ import 'rxjs/add/observable/of';
 })
 export class SearchInputComponent {
   @Input() placeholder: string;
+  @Input() direction: string;
 
   address = new FormControl();
   displaySearchResults = false;
   addresses: Observable<Array<string>>;
 
   constructor(
-    private searchService: SearchService
+    private searchService: SearchService,
+    private eventBus: EventBusService
   ) {
     this.searchService
         .search(this.address.valueChanges)
-        .subscribe(response => {
-          const resultAddresses = [];
-          response.results.map(address => {
-            resultAddresses.push(address.displayName);
-          });
-          this.addresses = Observable.of(resultAddresses);
-          this.displaySearchResults = true;
-        });
+        .subscribe(response => this.formatResult(response.results));
   }
 
   setAddress(event) {
+    const dataSet = event.target.dataset;
     this.address.setValue(event.target.textContent);
+    this.eventBus.post(
+      {
+        action: AppConsts.SET_DIRECTION,
+        direction: dataSet.direction,
+        data: JSON.parse(dataSet.rawAddress)
+      }
+    );
     this.displaySearchResults = false;
+  }
+
+  private formatResult(result) {
+    const resultAddresses = [];
+
+    result.map(address => {
+      resultAddresses.push(
+        {
+          display_name: address.displayName,
+          raw_data: JSON.stringify(address)
+        }
+      );
+    });
+
+    this.addresses = Observable.of(resultAddresses);
+    this.displaySearchResults = true;
   }
 }
