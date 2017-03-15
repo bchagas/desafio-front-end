@@ -1,5 +1,13 @@
 <template [ngIf]="dataLoaded">
-  <p>{{ duration }}</p>
-  <p>{{ distance }}</p>
-  <p>{{ tollFees | currency:'BRL':true }}</p>
+  <ol class="info">
+    <li>
+      <strong>Tempo de viagem:</strong> {{ duration }}
+    </li>
+    <li>
+      <strong>Distancia a percorrer:</strong> {{ distance }}km
+    </li>
+    <li>
+      <strong>Gasto com pedágio:</strong> {{ tollFees | currency:'BRL':true }}
+    </li>
+  </ol>
 </template>

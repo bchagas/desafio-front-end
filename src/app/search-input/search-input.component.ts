@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { EventBusService } from '../services/event-bus.service';
@@ -11,7 +11,7 @@ import 'rxjs/add/observable/of';
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.css']
+  encapsulation: ViewEncapsulation.None
 })
 export class SearchInputComponent {
   @Input() placeholder: string;

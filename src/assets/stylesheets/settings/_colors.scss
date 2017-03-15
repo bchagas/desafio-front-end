@@ -1,0 +1,10 @@
+$palettes: (
+  primary: (
+    base: #000000,
+    white-two: #F7F7F7,
+  )
+);
+
+@function palette($palette, $tone: 'base') {
+  @return map-get(map-get($palettes, $palette), $tone);
+};

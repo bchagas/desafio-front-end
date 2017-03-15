@@ -2,6 +2,8 @@
        [placeholder]="placeholder"
        [formControl]="address" />
 
-<ul *ngIf="displaySearchResults">
-  <li *ngFor="let address of addresses | async" (click)='setAddress($event)' [attr.data-raw-address]="address.raw_data" [attr.data-direction]="direction">{{ address.display_name }}</li>
+<ul class="results" *ngIf="displaySearchResults">
+  <li *ngFor="let address of addresses | async" (click)='setAddress($event)' [attr.data-raw-address]="address.raw_data" [attr.data-direction]="direction">
+    {{ address.display_name }}
+  </li>
 </ul>

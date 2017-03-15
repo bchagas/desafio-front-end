@@ -1,0 +1,38 @@
+form
+  float: left
+  padding-top: 5%
+  width: 100%
+
+  ol
+    text-align: left
+    +unstyle-list
+
+    > li
+      margin-bottom: 20px
+      position: relative
+
+  li
+    padding:
+      left: 4.5%
+      right: 4.5%
+    width: 90.7%
+
+    i
+      position: absolute
+      right: 34px
+      top: 8px
+
+  input[type='text']
+    background: palette(primary, white-two)
+    border-radius: 4px
+    border: none
+    font-size: 16px
+    color: rgba(palette(primary), .9)
+    padding: 12px 40px 12px 16px
+    outline: none
+    width: 85%
+
+    &::-webkit-input-placeholder,
+    &:-moz-placeholder,
+    &::-moz-placeholder
+      color: rgba(palette(primary), .2)

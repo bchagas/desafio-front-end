@@ -1,0 +1,30 @@
+@import map
+@import section/results
+@import section/info
+@import section/forms
+
+html,
+body
+  height: 100%
+
+aside
+  border-right: 1px solid rgba(black, 0.1)
+  float: left
+  height: 90%
+  width: 29.9%
+
+  a
+    border-bottom: 1px solid rgba(black, 0.1)
+    display: block
+    text-align: center
+    padding:
+      top: 10px
+      bottom: 10px
+
+//Fix for mobile browsers
+.material-icons
+  display: inline-flex
+  color: rgba(black, 0.1)
+  vertical-align: middle
+  overflow: hidden
+  @extend %material-icons

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { EventBusService } from '../../services/event-bus.service';
 import { AppConsts } from '../../app.consts';
 
@@ -8,7 +8,7 @@ declare var mplk: any;
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit, OnDestroy {
   subscription: any;

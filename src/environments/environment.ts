@@ -5,5 +5,5 @@ export const environment = {
   api_search_endpoint: 'http://api.maplink.com.br/v0',
   api_code: 'desafiodev',
   api_key: 'z0vmywzpbCSLdJYl5mUk5m2jNGytNGt6NJu6NGU=',
-  search_limit: '3'
+  search_limit: '5'
 };
