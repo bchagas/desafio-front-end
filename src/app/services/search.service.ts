@@ -14,7 +14,7 @@ export class SearchService {
   ) { }
 
   search(address: Observable<string>) {
-    return address.debounceTime(600)
+    return address.debounceTime(400)
            .distinctUntilChanged()
            .flatMap(addr =>
               this.api.get('/search', addr)
